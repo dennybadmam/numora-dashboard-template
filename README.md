@@ -13,27 +13,39 @@ Designed to be easy to rebrand and resell-friendly (CodeCanyon, Gumroad, Payhip)
 | Background | `#FFFFFF` (Clean White) |
 | Support | `official@vernex.com.ng` |
 
-## What’s included (target)
+## Included
 
-- Auth screens (demo-friendly login)
-- Dashboard + wallet UI
-- Virtual numbers: **2 USA** + **2 multi-country** server slots
-- OTP inbox UI (demo data)
-- Central `site.config` for name, logo, colors, links
-- No production API keys shipped
+- Landing page + banner slot
+- Demo login (any email/password or one-click demo user)
+- Dashboard, numbers (**2 USA + 2 Global**), OTP inbox, wallet
+- No affiliate, no sell logs, **no API keys**
+- Central `site.config.ts` for rebrand
+
+## Quick start
+
+```bash
+npm install
+npm run dev
+```
 
 ## Customize
 
-1. Edit **`site.config`** (name, logo, email, socials).
-2. Theme colors via CSS variables / Tailwind theme tokens.
-3. Replace images in `/public` (logo + landing banner).
-4. Create your own Supabase project and paste keys into `.env`.
+1. Open **`site.config.ts`** — name, email, server labels, links.
+2. Open **`src/index.css`** — `--color-primary` / `--color-accent`.
+3. Replace **`public/logo.svg`** and **`public/banner.svg`** (or PNG/WebP and update paths in config).
 
-## Support
+## Deploy live preview (Vercel)
 
-Need install help or custom features?  
+1. Import this GitHub repo on Vercel.
+2. Framework preset: **Vite** (or Other).
+3. Build command: `npm run build`
+4. Output directory: `dist`
+5. Deploy — no env vars required for demo mode.
+
+## Support / hire
+
 **official@vernex.com.ng**
 
 ## License
 
-Sold as a template product. Buyers deploy on their own hosting and backend.
+Sold as a template. Buyers host and connect their own backend.
