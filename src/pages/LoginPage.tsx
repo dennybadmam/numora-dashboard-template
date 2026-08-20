@@ -6,8 +6,8 @@ import { useAuth } from "../lib/auth";
 export function LoginPage() {
   const { login, loginDemo } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("demo@numora.app");
-  const [password, setPassword] = useState("demo1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   function onSubmit(e: FormEvent) {
@@ -21,55 +21,67 @@ export function LoginPage() {
   }
 
   return (
-    <div className="min-h-dvh flex flex-col items-center justify-center px-4 bg-background">
-      <div className="w-full max-w-sm">
-        <div className="flex flex-col items-center mb-8">
-          <img src={siteConfig.logoUrl} alt="" className="h-12 w-12 mb-3" />
-          <h1 className="text-2xl font-bold">Welcome to {siteConfig.name}</h1>
-          <p className="text-sm text-muted mt-1">Demo login — no API keys required</p>
+    <div className="min-h-dvh bg-[#070A12] text-white flex items-center justify-center px-4">
+      <div className="w-full max-w-md animate-fade-up">
+        <div className="flex items-center gap-2 mb-8">
+          <img src={siteConfig.logoUrl} alt="" className="h-9 w-9" />
+          <span className="font-semibold">{siteConfig.name}</span>
         </div>
 
-        <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-border bg-white p-5 shadow-sm">
-          <div>
-            <label className="text-xs font-medium text-muted">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-border px-3 py-2.5 text-sm outline-none focus:border-primary"
-            />
-          </div>
-          <div>
-            <label className="text-xs font-medium text-muted">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-xl border border-border px-3 py-2.5 text-sm outline-none focus:border-primary"
-            />
-          </div>
-          {error ? <p className="text-sm text-red-600">{error}</p> : null}
-          <button
-            type="submit"
-            className="w-full rounded-xl bg-primary text-white font-semibold py-3 hover:opacity-90"
-          >
-            Sign in
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              loginDemo();
-              navigate("/app");
-            }}
-            className="w-full rounded-xl border border-border bg-card font-semibold py-3 text-sm hover:bg-white"
-          >
-            One-click demo user
-          </button>
-        </form>
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl">
+          <p className="text-xs font-medium text-cyan-400">Welcome back</p>
+          <h1 className="text-2xl font-semibold mt-1 tracking-tight">Sign in to {siteConfig.name}</h1>
+          <p className="text-sm text-slate-400 mt-2">Encrypted session · Demo mode available</p>
 
-        <p className="text-center text-sm text-muted mt-6">
-          <Link to="/" className="text-primary font-medium">
-            ← Back to home
+          <form onSubmit={onSubmit} className="mt-6 space-y-4">
+            <label className="block">
+              <span className="text-xs text-slate-400">Email</span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="mt-1.5 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm outline-none focus:border-cyan-400/50"
+                placeholder="you@company.com"
+              />
+            </label>
+            <label className="block">
+              <span className="text-xs text-slate-400">Password</span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mt-1.5 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm outline-none focus:border-cyan-400/50"
+                placeholder="••••••••"
+              />
+            </label>
+            {error ? <p className="text-sm text-rose-400">{error}</p> : null}
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 py-3 text-sm font-semibold"
+            >
+              Sign in
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                loginDemo();
+                navigate("/app");
+              }}
+              className="w-full rounded-xl border border-white/10 py-3 text-sm font-medium text-slate-300 hover:bg-white/[0.04]"
+            >
+              Continue with demo workspace
+            </button>
+          </form>
+        </div>
+
+        <p className="text-center text-sm text-slate-500 mt-6">
+          New here?{" "}
+          <Link to="/register" className="text-cyan-400 font-medium">
+            Create account
+          </Link>
+          {" · "}
+          <Link to="/" className="text-slate-400">
+            Home
           </Link>
         </p>
       </div>
