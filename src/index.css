@@ -8,7 +8,10 @@
   --color-muted: #64748b;
   --color-border: #e2e8f0;
   --color-card: #f8fafc;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-dash: #0b0f19;
+  --color-dash-card: #121826;
+  --color-dash-border: rgb(255 255 255 / 0.1);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 html,
@@ -20,11 +23,36 @@ body,
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: var(--color-background);
-  color: var(--color-foreground);
+  background: #ffffff;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
 }
 
 * {
   box-sizing: border-box;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+.glass {
+  background: rgb(18 24 38 / 0.72);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.gradient-wallet {
+  background: linear-gradient(135deg, #1d4ed8 0%, #0ea5e9 45%, #06b6d4 100%);
 }
