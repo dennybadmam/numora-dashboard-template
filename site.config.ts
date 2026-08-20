@@ -1,54 +1,60 @@
-/**
- * NUMORA — edit this file to rebrand the entire template.
- * Buyers: change name, logo, colors, email, and links here only.
- */
 export const siteConfig = {
   name: "Numora",
-  tagline: "Virtual numbers & wallet dashboard",
+  tagline: "Global numbers. Instant OTPs. One wallet.",
   description:
-    "Rent virtual numbers, receive OTPs, and manage your wallet from one clean dashboard.",
-
+    "Enterprise-grade virtual numbers and real-time verification for teams that operate across borders.",
   logoUrl: "/logo.svg",
   faviconUrl: "/favicon.svg",
   bannerUrl: "/banner.svg",
-
-  colors: {
-    primary: "#2563EB",
-    accent: "#06B6D4",
-    background: "#FFFFFF",
-    foreground: "#0F172A",
-    muted: "#64748B",
-    border: "#E2E8F0",
-    card: "#F8FAFC",
-  },
-
   contact: {
     email: "official@vernex.com.ng",
-    hireCta: "Need a developer to customize this? Email us.",
+    hireCta: "Need a custom build or white-label? Talk to our engineers.",
   },
-
-  social: {
-    twitter: "",
-    telegram: "",
-  },
-
-  /** Demo-only server slots (2 USA + 2 multi-country). */
+  currencies: [
+    { code: "USD", symbol: "$", label: "US Dollar", locale: "en-US" },
+    { code: "EUR", symbol: "€", label: "Euro", locale: "de-DE" },
+    { code: "GBP", symbol: "£", label: "British Pound", locale: "en-GB" },
+    { code: "CAD", symbol: "$", label: "Canadian Dollar", locale: "en-CA" },
+    { code: "NGN", symbol: "₦", label: "Nigerian Naira", locale: "en-NG" },
+  ],
+  /** Demo rates vs USD for display formatting */
+  fxToUsd: {
+    USD: 1,
+    EUR: 0.92,
+    GBP: 0.79,
+    CAD: 1.36,
+    NGN: 1600,
+  } as Record<string, number>,
+  countryCodes: [
+    { iso: "NG", dial: "+234", flag: "🇳🇬", name: "Nigeria" },
+    { iso: "US", dial: "+1", flag: "🇺🇸", name: "United States" },
+    { iso: "GB", dial: "+44", flag: "🇬🇧", name: "United Kingdom" },
+    { iso: "CA", dial: "+1", flag: "🇨🇦", name: "Canada" },
+    { iso: "DE", dial: "+49", flag: "🇩🇪", name: "Germany" },
+    { iso: "FR", dial: "+33", flag: "🇫🇷", name: "France" },
+    { iso: "IN", dial: "+91", flag: "🇮🇳", name: "India" },
+    { iso: "AE", dial: "+971", flag: "🇦🇪", name: "UAE" },
+  ],
   servers: {
     usa: [
-      { id: "us-1", label: "USA Server 1", flag: "🇺🇸", status: "online" as const },
-      { id: "us-2", label: "USA Server 2", flag: "🇺🇸", status: "online" as const },
+      { id: "us-1", label: "US East · Virginia", flag: "🇺🇸", latencyMs: 18, uptime: "99.98%" },
+      { id: "us-2", label: "US West · Oregon", flag: "🇺🇸", latencyMs: 24, uptime: "99.95%" },
     ],
     global: [
-      { id: "gl-1", label: "Global Server 1", flag: "🌍", status: "online" as const },
-      { id: "gl-2", label: "Global Server 2", flag: "🌍", status: "online" as const },
+      { id: "gl-1", label: "EU · Frankfurt", flag: "🇪🇺", latencyMs: 32, uptime: "99.97%" },
+      { id: "gl-2", label: "APAC · Singapore", flag: "🇸🇬", latencyMs: 41, uptime: "99.94%" },
     ],
   },
-
-  navigation: [
-    { label: "Features", href: "#features" },
-    { label: "Numbers", href: "#numbers" },
-    { label: "Pricing", href: "#pricing" },
-  ],
+  coverage: ["US", "GB", "CA", "DE", "FR", "NL", "SE", "AU", "SG", "AE", "NG", "IN", "BR", "MX", "JP"],
+  pricingUsd: {
+    starter: 0,
+    growth: 29,
+    scale: 99,
+    whatsapp: 2.4,
+    telegram: 1.8,
+    google: 3.1,
+    instagram: 2.2,
+  },
 } as const;
 
-export type SiteConfig = typeof siteConfig;
+export type CurrencyCode = (typeof siteConfig.currencies)[number]["code"];
